@@ -1,7 +1,33 @@
-# Sonar Assistant — публичный mirror релизов
+# Sonar Assistant: публичные выпуски Windows
 
-Public mirror репо для Tauri auto-updater. Релизы автоматически зеркалятся из приватного [`ciddowme/realtime-coach`](https://github.com/ciddowme/realtime-coach) (source closed) через GHA workflow.
+Этот репозиторий распространяет установщики **Sonar Assistant / Сонар Ассистент**, настольного помощника для разговоров и встреч. Исходный код приложения закрыт. Описание продукта и загрузки: [sonarsense.io/ru/assistant](https://sonarsense.io/ru/assistant).
 
-**HTTPS CDN через GitHub Releases** — стабильно отдаёт MSI в РФ (где plain-HTTP на нестандартных портах режется DPI).
+## Скачать и обновить
 
-См. [Releases](../../releases) для актуальных MSI/.sig.
+- [Последний опубликованный стабильный выпуск](https://github.com/ciddowme/sonar-updates/releases/latest).
+- [Все выпуски](https://github.com/ciddowme/sonar-updates/releases).
+- [Действующий манифест автообновления](https://assistant.sonarsense.io/updates/latest.json). Именно этот канал использует приложение; его версия может отличаться от последнего созданного релиза в GitHub.
+
+На **10 сентября 2026 года** публичный манифест и стабильный выпуск указывают **0.1.559**. Это датированная проверка, а не закрепление будущих обновлений на этой версии.
+
+## Что входит в текущий выпуск
+
+| Файл | Назначение |
+|---|---|
+| `<version>.exe` | Обычный Windows-установщик |
+| `<version>-offline.exe` | Установщик с включённым WebView2 Runtime |
+| `*.exe.sig` | Отделённая подпись для проверки артефакта |
+| `release-provenance.json` | Происхождение сборки и связь с исходной ревизией |
+| `sbom.cdx.json` | Перечень программных компонентов в формате CycloneDX |
+
+Состав таблицы проверен на [v0.1.559](https://github.com/ciddowme/sonar-updates/releases/tag/v0.1.559). Старые выпуски могут содержать MSI и другой набор файлов. Наличие подписи автообновления само по себе не является гарантией отсутствия предупреждений Windows SmartScreen.
+
+Релизы с `candidate-` в имени, черновики и предварительные сборки не следует выбирать вместо действующего канала. Установщик офлайн включает среду запуска, но AI-функции продукта требуют сетевых сервисов. Доступность GitHub CDN зависит от сети пользователя.
+
+Этот канал содержит Windows x86-64. Для **macOS Apple Silicon** используйте загрузку и инструкции на [странице продукта](https://sonarsense.io/ru/assistant); не подменяйте её Windows-артефактами.
+
+## Поддержка
+
+[Сайт](https://sonarsense.io/ru/assistant) · [Условия Assistant](https://sonarsense.io/terms/assistant) · [Конфиденциальность](https://sonarsense.io/privacy/assistant) · **support@sonarsense.io**.
+
+В публичные issues не прикладывайте токены, записи частных разговоров, персональные данные или внутреннюю документацию. Для сообщения о проблеме достаточно версии, ОС и воспроизводимых шагов без чувствительных данных.
